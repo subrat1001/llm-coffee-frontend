@@ -1,1 +1,264 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Prose tweaks for ChatGPT style lists/tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+}
+
+.prose th {
+  border-bottom: 2px solid #334155;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.prose td {
+  border-bottom: 1px solid #1e293b;
+  padding: 0.5rem 0.75rem;
+  color: #cbd5e1;
+}
+
+.prose ul {
+  list-style-type: disc;
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.prose pre {
+  background: #020617 !important;
+  border: 1px solid #1e293b;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85em;
+  background: #1e293b/40;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  color: #f59e0b;
+}
+
+.prose p {
+  margin-bottom: 0.85rem;
+  line-height: 1.625;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  color: #f8fafc;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose h1 { font-size: 1.4rem; }
+.prose h2 { font-size: 1.2rem; }
+.prose h3 { font-size: 1.05rem; }
+
+/* ==========================================
+   CINEMATIC MICRO ANIMATIONS & BRANDING
+   ========================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes steam-rise-1 {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  30% { opacity: 0.7; }
+  70% { opacity: 0.4; }
+  100% { transform: translateY(-10px) scaleX(1.15); opacity: 0; }
+}
+
+@keyframes steam-rise-2 {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  40% { opacity: 0.5; }
+  80% { opacity: 0.3; }
+  100% { transform: translateY(-12px) scaleX(0.85); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px rgba(245, 158, 11, 0.15); }
+  50% { box-shadow: 0 0 22px rgba(245, 158, 11, 0.35); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-steam-1 {
+  animation: steam-rise-1 3s ease-in-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steam-rise-2 3.5s ease-in-out 1.5s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(30, 41, 59, 0.6) 0%, rgba(51, 65, 85, 0.8) 50%, rgba(30, 41, 59, 0.6) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.animate-breathe {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   THEME SYSTEM - LIGHT MODE OVERRIDES
+   ========================================================================== */
+html.light body {
+  background-color: #f8fafc !important; /* slate-50 */
+  color: #0f172a !important; /* slate-900 */
+}
+
+/* Background overrides */
+html.light .bg-slate-950,
+html.light .bg-slate-955 {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/40,
+html.light .bg-slate-950\/20,
+html.light .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html.light .bg-slate-900,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-900\/30,
+html.light .bg-slate-900\/20,
+html.light .bg-slate-900\/10 {
+  background-color: #f1f5f9 !important; /* slate-100 */
+}
+
+html.light .bg-slate-850,
+html.light .bg-slate-800,
+html.light .bg-slate-800\/50,
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/80 {
+  background-color: #e2e8f0 !important; /* slate-200 */
+}
+
+/* Text overrides */
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-slate-250,
+html.light .text-white {
+  color: #0f172a !important; /* slate-900 */
+}
+
+html.light .text-slate-300,
+html.light .text-slate-350,
+html.light .text-slate-400,
+html.light .text-slate-450 {
+  color: #334155 !important; /* slate-700 */
+}
+
+html.light .text-slate-500,
+html.light .text-slate-550,
+html.light .text-slate-600,
+html.light .text-slate-650 {
+  color: #64748b !important; /* slate-500 */
+}
+
+/* Border overrides */
+html.light .border-slate-800,
+html.light .border-slate-800\/40,
+html.light .border-slate-800\/50,
+html.light .border-slate-800\/60,
+html.light .border-slate-800\/80,
+html.light .border-slate-850,
+html.light .border-slate-700,
+html.light .border-slate-700\/80 {
+  border-color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* Inputs, textareas, prose in light mode */
+html.light input,
+html.light textarea {
+  color: #0f172a !important;
+}
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.light .prose th {
+  border-bottom: 2px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+html.light .prose td {
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+/* Scrollbars in light mode */
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* Shimmer animation for light mode */
+html.light .animate-shimmer {
+  background: linear-gradient(90deg, rgba(226, 232, 240, 0.6) 0%, rgba(241, 245, 249, 0.8) 50%, rgba(226, 232, 240, 0.6) 100%) !important;
+  background-size: 200% 100%;
+}
